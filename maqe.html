@@ -7,22 +7,28 @@
     <title>Maqe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function loadDoc() {
+          const xhttp = new XMLHttpRequest();
+          const inpObj = document.getElementById("value").value;
+          xhttp.onload = function() {
+            document.getElementById("result").innerHTML = this.responseText;
+          }
+          xhttp.open("GET", "cal.php?value="+inpObj);
+          xhttp.send();
+        }
+        </script>
 </head>
 
 <body>
     <div class="container-fluid mt-3">
     <h2>Maqe</h2>
-        <form method="GET" action="cal.php">
             <div class="input-group mb-2 xs-3">
                 <span class="input-group-text ">Input</span>
-                <input type="text" class="form-control d-inline-block" id="value" name='value' placeholder="RW15RW1">
+                <input type="text" class="form-control d-inline-block" id="value" placeholder="RW15RW1">
             </div>
-            <input type="submit" class="btn btn-secondary mb-2">
-            <div class="form-control" id="result">
-                <?php if(isset($_GET['result']))echo $_GET['result'];
-                ?>
-            </div>
-        </form>
+            <button onclick="loadDoc()" class="btn btn-secondary mb-2">submit</button>
+            <div class="form-control" id="result"></div>
     </div>
 </body>
 

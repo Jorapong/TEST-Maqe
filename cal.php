@@ -62,10 +62,22 @@
 			}
 			
 		}
-		return "X: ".$X." Y: ".$Y." Direction: ".$direction."\n";
+		return "X: ".$X." Y: ".$Y." Direction: ".$direction;
 	}
+	header("Access-Control-Allow-Origin: *");
+    
+    header("Content-Type: application/json; charset=UTF-8");
+    
+    header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
+    
+    header("Access-Control-Max-Age: 3600");
+    
+    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+	$requestMethod = $_SERVER["REQUEST_METHOD"];
+	if($requestMethod == 'GET'){
 	$value=$_GET['value'];
-	$resultmaqe=calRaduisAndDistance($value);
+	echo (calRaduisAndDistance($value));
+	}
 
-	header('Location: http://localhost/test/TEST-Maqe/maqe.php?result='.$resultmaqe);
+
 	?>
