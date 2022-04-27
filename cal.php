@@ -1,4 +1,6 @@
 <?php
+	//$table=array(array(1,1,1,1,1,1,1,1,1),
+	//array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1),array(1,1,1,1,1,1,1,1,1));
 	function calDirection($rad)
 	{
 		$facing = "";
@@ -21,10 +23,11 @@
 		$rad = 0;
 		$X = 0;
 		$Y = 0;
-		$direction = "N"; // initial direction facing
+		$direction = "North"; // initial direction facing
 
 		for($i=0; $i<strlen($line); $i++)
 		{
+			//$table[$X+4][$Y+4]=0;
 			/////// Find Raduis ////////
 			if ($line[$i] == "R") 		{ 	$rad += 90; 	}
 			elseif ($line[$i] == "L") 	{  	$rad -= 90; 	}
@@ -57,11 +60,12 @@
 				elseif($direction == "South") { $Y -= $distanceNum; }
 				elseif($direction == "West") { $X -= $distanceNum; }
 			}
+			
 		}
 		return "X: ".$X." Y: ".$Y." Direction: ".$direction."\n";
 	}
 	$value=$_GET['value'];
 	$resultmaqe=calRaduisAndDistance($value);
 
-	header('Location: http://localhost/test/maqe.php?result='.$resultmaqe);
+	header('Location: http://localhost/test/TEST-Maqe/maqe.php?result='.$resultmaqe);
 	?>
